@@ -1,0 +1,24 @@
+<configuration>
+
+    <!-- Definir la salida de consola -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level][%-48.-48logger{48}] [TRXID:%-17.-17X{id_trx}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Definir la salida a un archivo -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/application.log</file>
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level][%-48logger{48}] [TRXID:%-17.-17X{id_trx}] %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Definir el nivel de log -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+
+</configuration>

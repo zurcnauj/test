@@ -1,0 +1,174 @@
+{
+	"info": {
+		"_postman_id": "049ebba7-3fc5-4913-8e90-108dc14daf91",
+		"name": "test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9650105",
+		"_collection_link": "https://planetary-sunset-294905.postman.co/workspace/Tutoriales_00~acf1f808-dbde-4cf1-84a4-c5e3a9bcbb49/collection/9650105-049ebba7-3fc5-4913-8e90-108dc14daf91?action=share&creator=9650105&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODc4MDI5NDl9.LgbUzSLqPZnSIZxpvNEHfgQ6exCalS_nallbD1oFFlV0VLNJ1jUKco8HIn66-2p0ituhkeeO1R-tM7crbd2ndQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Juan Rodriguez\",\r\n    \"email\": \"juan3srodriguez.org\",\r\n    \"password\": \"hunter2\",\r\n    \"phones\": [\r\n        {\r\n            \"user_id\":\"0\",\r\n            \"number\": \"000\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        },\r\n        {\r\n            \"user_id\":\"0\",\r\n            \"number\": \"000\",\r\n            \"citycode\": \"1\",\r\n            \"contrycode\": \"57\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update phones user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODc4MDI5NDl9.LgbUzSLqPZnSIZxpvNEHfgQ6exCalS_nallbD1oFFlV0VLNJ1jUKco8HIn66-2p0ituhkeeO1R-tM7crbd2ndQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " [\r\n    {\r\n        \"number\": \"001\",\r\n        \"citycode\": \"1\",\r\n        \"contrycode\": \"57\"\r\n    },\r\n    {\r\n        \"number\": \"002\",\r\n        \"citycode\": \"1\",\r\n        \"contrycode\": \"57\"\r\n    }\r\n]\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/user/1/phones",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"1",
+						"phones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODc4MDI5NDl9.LgbUzSLqPZnSIZxpvNEHfgQ6exCalS_nallbD1oFFlV0VLNJ1jUKco8HIn66-2p0ituhkeeO1R-tM7crbd2ndQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/user/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "find user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzUxMiJ9.eyJleHAiOjE2ODc4MDI5NDl9.LgbUzSLqPZnSIZxpvNEHfgQ6exCalS_nallbD1oFFlV0VLNJ1jUKco8HIn66-2p0ituhkeeO1R-tM7crbd2ndQ",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:8080/user/1",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get token",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = responseBody\r",
+							"console.log('token',jsonData)\r",
+							"postman.setEnvironmentVariable(\"token\",jsonData);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "99d664e9-a535-4259-9cf5-24d916de22ce",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/token",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"token"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
