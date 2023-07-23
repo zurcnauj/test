@@ -15,10 +15,21 @@
         </encoder>
     </appender>
 
+    <appender name="FILE-2" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/application-2.log</file>
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>logs/application.%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--        </rollingPolicy>-->
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%-5level][%-48logger{48}] [TRXID:%-17.-17X{id_trx}] %msg%n</pattern>
+        </encoder>
+    </appender>
     <!-- Definir el nivel de log -->
     <root level="info">
         <appender-ref ref="CONSOLE" />
-        <appender-ref ref="FILE" />
+<!--        <appender-ref ref="FILE" />-->
+        <appender-ref ref="FILE-2" />
     </root>
 
 </configuration>

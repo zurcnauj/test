@@ -37,7 +37,6 @@ class UserControllerFindlTest {
         assertTrue(USER_ENTITY.getId()==userEntity.getId());
         assertTrue(USER_ENTITY.getEmail().equals(userEntity.getEmail()));
     }
-
     @Test
     void getAll_204() throws Exception  {
         MvcResult result = this.mockMvc.perform(
@@ -47,7 +46,6 @@ class UserControllerFindlTest {
         .andExpect(status().is(204)).andReturn();
         String responseBody = result.getResponse().getContentAsString();
     }
-
     @Test
     void getAll_401NoToken() throws Exception  {
         MvcResult result = this.mockMvc.perform(
@@ -56,7 +54,6 @@ class UserControllerFindlTest {
         .andExpect(status().is(401)).andReturn();
         String responseBody = result.getResponse().getContentAsString();
     }
-
     @Test
     void getAll_401InvalidToken() throws Exception  {
         MvcResult result = this.mockMvc.perform(
